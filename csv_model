@@ -1,0 +1,13 @@
+public function importCsv()
+{
+    $file = public_path('file/test.csv');
+
+    $customerArr = $this->csvToArray($file);
+
+    for ($i = 0; $i < count($customerArr); $i ++)
+    {
+        User::firstOrCreate($customerArr[$i]);
+    }
+
+    return 'done and saved';    
+}
